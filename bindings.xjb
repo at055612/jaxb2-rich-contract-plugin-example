@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:evt="event-logging:3"
+    jaxb:extensionBindingPreferences="xjc"
+    jaxb:version="2.0">
+
+    <!-- NOTE: This binding file operates on the transient schema.mod.xsd file that is derived from the
+        source schema.  All types named XxxCompleType are renamed to Xxx in GenClasses.java.  This is
+        to provide better java class names. 
+    -->
+
+    <jaxb:bindings schemaLocation="schema.xsd" node="/xs:schema">
+
+        <!-- localScoping to prevent nested classes -->
+        <!-- choiceContentProperty to give us a single java property for a xs:choice -->
+        <jaxb:globalBindings 
+            generateElementProperty="false" 
+            localScoping="toplevel">
+            <!--choiceContentProperty="true"-->
+
+            <!-- <xjc:simple /> -->
+        </jaxb:globalBindings>
+
+
+        <jaxb:bindings node="xs:complexType[@name='BikeComplexType']">
+            <inheritance:implements>stroom.jaxbexample.Vehicle</inheritance:implements> 
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='CarComplexType']">
+            <inheritance:implements>stroom.jaxbexample.Vehicle</inheritance:implements> 
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:complexType[@name='TrainComplexType']">
+            <inheritance:implements>stroom.jaxbexample.Vehicle</inheritance:implements> 
+        </jaxb:bindings>
+
+        <!-- Change prop name from userOrDevice to endpoints-->
+        <jaxb:bindings node="//xs:element[@name='Transport']//xs:choice">
+            <jaxb:property name="vehicle" >
+                <!-- Force it to be List<Endpoint> instead of List<java.lang.Object> -->
+                <jaxb:baseType name="stroom.jaxbexample.Vehicle" />
+            </jaxb:property>
+        </jaxb:bindings>
+
+    </jaxb:bindings>
+</jaxb:bindings>
+<!-- vim:set expandtab shiftwidth=4 tabstop=4: -->

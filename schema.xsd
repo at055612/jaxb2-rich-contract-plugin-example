@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:evt="event-logging:3" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   targetNamespace="event-logging:3" elementFormDefault="qualified"
+   attributeFormDefault="unqualified" version="3.4.2" >
+   <xs:element name="Root">
+      <xs:complexType>
+         <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="Transport" minOccurs="1" maxOccurs="1">
+               <xs:complexType>
+                  <xs:sequence minOccurs="1" maxOccurs="1">
+                     <xs:choice minOccurs="1" maxOccurs="1">
+                        <xs:sequence minOccurs="1" maxOccurs="1">
+                           <xs:element name="Bike" type="evt:BikeComplexType" minOccurs="1"
+                              maxOccurs="1">
+                           </xs:element>
+                           <xs:element name="Car" type="evt:CarComplexType" minOccurs="0"
+                              maxOccurs="1">
+                           </xs:element>
+                           <xs:element name="Train" type="evt:TrainComplexType" minOccurs="0"
+                              maxOccurs="1">
+                           </xs:element>
+                        </xs:sequence>
+                     </xs:choice>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+
+   <xs:complexType name="BikeComplexType">
+      <xs:sequence minOccurs="1" maxOccurs="1">
+         <xs:element name="FrameSize" type="xs:string" minOccurs="1" maxOccurs="1">
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="CarComplexType">
+      <xs:sequence minOccurs="1" maxOccurs="1">
+         <xs:element name="EngineSize" type="xs:string" minOccurs="1" maxOccurs="1">
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="TrainComplexType">
+      <xs:sequence minOccurs="1" maxOccurs="1">
+         <xs:element name="CarriageCount" type="xs:string" minOccurs="1" maxOccurs="1">
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+
+</xs:schema>
+<!-- vim:set expandtab shiftwidth=3 tabstop=3: -->
