@@ -21,8 +21,6 @@
             generateElementProperty="false" 
             localScoping="toplevel">
             <!--choiceContentProperty="false">-->
-
-            <!-- <xjc:simple /> -->
         </jaxb:globalBindings>
 
         <jaxb:bindings node="xs:complexType[@name='BikeComplexType']">
@@ -33,20 +31,12 @@
             <inheritance:implements>stroom.jaxbexample.Vehicle</inheritance:implements> 
         </jaxb:bindings>
 
-        <!--<jaxb:bindings node="xs:complexType[@name='TrainComplexType']">-->
-            <!--<inheritance:implements>stroom.jaxbexample.Vehicle</inheritance:implements> -->
-        <!--</jaxb:bindings>-->
-
         <jaxb:bindings node="//xs:element[@name='Transport']//xs:choice">
             <jaxb:property name="vehicle" >
                 <!-- Force it to use our provided interface -->
                 <jaxb:baseType name="stroom.jaxbexample.Vehicle" />
             </jaxb:property>
         </jaxb:bindings>
-
-        <!--<jaxb:bindings multiple="true" node="//xs:element[@name='Transport']//xs:choic">-->
-            <!--<simplify:as-element-property/>-->
-        <!--</jaxb:bindings>-->
 
     </jaxb:bindings>
 </jaxb:bindings>
