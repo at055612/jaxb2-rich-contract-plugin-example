@@ -2,6 +2,8 @@ package stroom.jaxbexample;
 
 import com.sun.tools.xjc.Driver;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -9,8 +11,9 @@ import java.util.Arrays;
 public class Main {
 
 
-    private static final Path PROJECT_ROOT = Paths.get(".");
-    private static final Path GEN_PATH = PROJECT_ROOT.resolve("src/main/java/stroom/jaxbexample/gen");
+    private static final Path PROJECT_ROOT = Paths.get(".").toAbsolutePath().normalize();
+    private static final Path SOURCE_ROOT = PROJECT_ROOT.resolve("src/main/java");
+    private static final Path GEN_PKG_PATH = SOURCE_ROOT.resolve("stroom/jaxbexample/gen");
 
     public static void main(String[] args) throws Exception {
 
@@ -18,13 +21,28 @@ public class Main {
                 "-xmlschema",
                 "-extension",
                 "-p", "stroom.jaxbexample.gen",
-                "-d", GEN_PATH.toAbsolutePath().toString(),
-                "-b", PROJECT_ROOT.resolve("bindings.xjb").toAbsolutePath().toString(),
+                "-d", SOURCE_ROOT.toString(),
+                "-b", PROJECT_ROOT.resolve("bindings.xjb").toString(),
                 "-quiet",
-                PROJECT_ROOT.resolve("schema.xsd").toAbsolutePath().toString(), //the source schema to gen classes from
+                PROJECT_ROOT.resolve("schema.xsd").toString(), //the source schema to gen classes from
                 "-Xfluent-builder",
                 "-Xinheritance",
+//                "-Xsimplify",
         };
+
+        if (Files.exists(GEN_PKG_PATH)) {
+            Files.newDirectoryStream(GEN_PKG_PATH)
+                    .forEach(path -> {
+                        try {
+                            System.out.println("Deleting file " + path.toString());
+                            Files.delete(path);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+            System.out.println("Deleting dir " + GEN_PKG_PATH.toString());
+            Files.delete(GEN_PKG_PATH);
+        }
 
         System.out.println("Running XJC with arguments:");
         Arrays.stream(xjcOptions)

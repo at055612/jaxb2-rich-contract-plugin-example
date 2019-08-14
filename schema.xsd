@@ -7,21 +7,29 @@
          <xs:sequence minOccurs="1" maxOccurs="1">
             <xs:element name="Transport" minOccurs="1" maxOccurs="1">
                <xs:complexType>
-                  <xs:sequence minOccurs="1" maxOccurs="1">
+<!--                  <xs:sequence minOccurs="1" maxOccurs="1">-->
                      <xs:choice minOccurs="1" maxOccurs="1">
-                        <xs:sequence minOccurs="1" maxOccurs="1">
+                        <!--<xs:sequence minOccurs="1" maxOccurs="1">-->
                            <xs:element name="Bike" type="evt:BikeComplexType" minOccurs="1"
                               maxOccurs="1">
                            </xs:element>
-                           <xs:element name="Car" type="evt:CarComplexType" minOccurs="0"
+                           <xs:element name="Car" type="evt:CarComplexType" minOccurs="1"
                               maxOccurs="1">
                            </xs:element>
-                           <xs:element name="Train" type="evt:TrainComplexType" minOccurs="0"
-                              maxOccurs="1">
-                           </xs:element>
-                        </xs:sequence>
+                           <!--<xs:element name="Train" type="evt:TrainComplexType" minOccurs="1"-->
+                              <!--maxOccurs="1">-->
+                           <!--</xs:element>-->
+                           <!--<xs:element name="HoverCraft" minOccurs="1" maxOccurs="1">-->
+                              <!--<xs:complexType>-->
+                                 <!--<xs:sequence minOccurs="1" maxOccurs="1">-->
+                                    <!--<xs:element name="FanCount" type="xs:string" minOccurs="1" maxOccurs="1">-->
+                                    <!--</xs:element>-->
+                                 <!--</xs:sequence>-->
+                              <!--</xs:complexType>-->
+                           <!--</xs:element>-->
+                        <!--</xs:sequence>-->
                      </xs:choice>
-                  </xs:sequence>
+<!--                  </xs:sequence>-->
                </xs:complexType>
             </xs:element>
          </xs:sequence>
@@ -42,12 +50,12 @@
       </xs:sequence>
    </xs:complexType>
 
-   <xs:complexType name="TrainComplexType">
-      <xs:sequence minOccurs="1" maxOccurs="1">
-         <xs:element name="CarriageCount" type="xs:string" minOccurs="1" maxOccurs="1">
-         </xs:element>
-      </xs:sequence>
-   </xs:complexType>
+   <!--<xs:complexType name="TrainComplexType">-->
+      <!--<xs:sequence minOccurs="1" maxOccurs="1">-->
+         <!--<xs:element name="CarriageCount" type="xs:string" minOccurs="1" maxOccurs="1">-->
+         <!--</xs:element>-->
+      <!--</xs:sequence>-->
+   <!--</xs:complexType>-->
 
 </xs:schema>
 <!-- vim:set expandtab shiftwidth=3 tabstop=3: -->
