@@ -23,10 +23,10 @@ repositories {
 dependencies {
 
     // This version causes the generation of code that won't compile
-    compile "net.codesup.util:jaxb2-rich-contract-plugin:2.0.1"
+    //compile "net.codesup.util:jaxb2-rich-contract-plugin:2.0.1"
 
     // This modified vbersion works
-    //compile "net.codesup.util:jaxb2-rich-contract-plugin:2.1.0-SNAPSHOT"
+    compile "net.codesup.util:jaxb2-rich-contract-plugin:2.1.0-SNAPSHOT"
 
 
     compile "org.glassfish.jaxb:jaxb-xjc:2.3.2"

@@ -18,6 +18,24 @@
                         </xs:choice>
                     </xs:complexType>
                 </xs:element>
+                <xs:element name="Fruit">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="Apple" type="evt:AppleComplexType"/>
+                            <xs:element name="Orange" type="evt:OrangeComplexType"/>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="MulitFruit">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="Apple" type="evt:AppleComplexType"/>
+                            <xs:element name="Orange" type="evt:OrangeComplexType"/>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="SimpleElement" type="evt:AppleComplexType">
+                </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -31,6 +49,18 @@
     <xs:complexType name="CarComplexType">
         <xs:sequence>
             <xs:element name="EngineSize" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AppleComplexType">
+        <xs:sequence>
+            <xs:element name="Colour" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="OrangeComplexType">
+        <xs:sequence>
+            <xs:element name="DimpleCount" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 

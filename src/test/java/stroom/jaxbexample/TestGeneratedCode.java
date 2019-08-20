@@ -2,8 +2,10 @@ package stroom.jaxbexample;
 
 import org.junit.Assert;
 import org.junit.Test;
+import stroom.jaxbexample.gen.AppleComplexType;
 import stroom.jaxbexample.gen.BikeComplexType;
 import stroom.jaxbexample.gen.CarComplexType;
+import stroom.jaxbexample.gen.Fruit;
 import stroom.jaxbexample.gen.Transport;
 
 public class TestGeneratedCode {
@@ -24,6 +26,8 @@ public class TestGeneratedCode {
 
         Vehicle vehicle = transport.getVehicle();
 
+        Assert.assertNotNull(vehicle);
+
         Assert.assertTrue(vehicle instanceof CarComplexType);
     }
 
@@ -37,6 +41,8 @@ public class TestGeneratedCode {
                 .build();
 
         Vehicle vehicle = transport.getVehicle();
+
+        Assert.assertNotNull(vehicle);
 
         Assert.assertTrue(vehicle instanceof BikeComplexType);
     }
@@ -52,6 +58,41 @@ public class TestGeneratedCode {
 
         Vehicle vehicle = transport.getVehicle();
 
+        Assert.assertNotNull(vehicle);
+
         Assert.assertTrue(vehicle instanceof BikeComplexType);
+    }
+
+
+    @Test
+    public void testAddApple() {
+
+        Fruit fruit = Fruit.builder()
+                .withApple()
+                    .withColour("Red")
+                    .end()
+                .build();
+
+        Object appleOrOrange = fruit.getAppleOrOrange();
+
+        Assert.assertNotNull(appleOrOrange);
+
+        Assert.assertTrue(appleOrOrange instanceof AppleComplexType);
+    }
+
+    @Test
+    public void testAddApple2() {
+
+        Fruit2 fruit = Fruit2.builder()
+                .withApple()
+                .withColour("Red")
+                .end()
+                .build();
+
+        Object appleOrOrange = fruit.getAppleOrOrange();
+
+        Assert.assertNotNull(appleOrOrange);
+
+        Assert.assertTrue(appleOrOrange instanceof AppleComplexType);
     }
 }

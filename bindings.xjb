@@ -19,8 +19,8 @@
         <!-- choiceContentProperty to give us a single java property for a xs:choice -->
         <jaxb:globalBindings 
             generateElementProperty="false" 
-            localScoping="toplevel">
-            <!--choiceContentProperty="false">-->
+            localScoping="toplevel"
+            choiceContentProperty="true">
         </jaxb:globalBindings>
 
         <jaxb:bindings node="xs:complexType[@name='BikeComplexType']">
